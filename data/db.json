@@ -1,0 +1,22 @@
+{
+    "posts": [
+        {
+            "id": 1,
+            "title": "Laravel",
+            "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad corporis cumque eaque amet veritatis neque, perferendis in reprehenderit placeat rerum, dignissimos quas sint, similique facere optio! Reprehenderit doloribus maiores nostrum!",
+            "tags": ["webdev", "coding", "design"]
+        },
+        {
+            "id": 2,
+            "title": "Vue",
+            "desc": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolorem similique consectetur molestias, accusantium unde a! Cupiditate mollitia laboriosam minima explicabo eum dolor accusamus, itaque architecto quod tempora qui tempore nulla!",
+            "tags": ["webdev", "design"]
+        },
+        {
+            "id": 3,
+            "title": "React",
+            "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde harum temporibus placeat, quo sapiente alias veritatis facere deserunt omnis in voluptatum beatae nihil deleniti similique culpa nam quasi voluptas aliquid amet numquam? Laudantium hic saepe eum atque veritatis accusantium iure aliquam odio incidunt dolorem nesciunt rem delectus cumque, rerum, illum velit fugiat temporibus sapiente reprehenderit molestiae esse fuga asperiores. Quod consequatur quidem eum, aliquid voluptatibus nemo ipsa adipisci expedita a qui omnis, rerum laboriosam illum.",
+            "tags": ["webdev", "coding"]
+        }
+    ]
+}

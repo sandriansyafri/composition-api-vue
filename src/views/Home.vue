@@ -1,60 +1,40 @@
 <template>
-    <div class="home container">
-        <div class="row justify-content-center">
-            <div class="col-6 text-center">
-                <h1>Search</h1>
-                <input v-model="keywords" type="text" class="form-control" />
-                <button @click="handleStopWatch" class="btn btn-primary my-3">Stop</button>
+    <div class="home">
+        <div v-if="responseError">
+            <div class="container">
+                <div class="row">
+                    <div class="col text-center">
+                        <h1>{{ responseError }}</h1>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="row mt-4 justify-content-center">
-            <div class="col-6">
-                <h3 class="text-center">Lists Student</h3>
-                <ul class="list-group" v-if="filterStudent.length">
-                    <li v-for="student of filterStudent" :key="student" class="list-group-item">{{ student }}</li>
-                </ul>
-                <ul v-else class="text-center">
-                    <li class="list-group-item">data tidak ada</li>
-                </ul>
+        <div v-if="posts.length">
+            <Posts :posts="posts" />
+        </div>
+        <div v-else>
+            <div class="container">
+                <div class="row">
+                    <div class="col text-center">
+                        <h1>Loading</h1>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </template>
 
 <script>
-import { computed, ref } from "@vue/reactivity";
-import { watch, watchEffect } from "@vue/runtime-core";
+import Posts from "../components/Posts.vue";
+import getPosts from "../composable/getPosts";
 export default {
+    components: { Posts },
     setup() {
-        const keywords = ref("");
-        const students = ref(["Hafid", "Yogi", "Fikri"]);
-        const filterStudent = computed(() => {
-            return students.value.filter((student) => {
-                return student.toLowerCase().includes(keywords.value.toLowerCase());
-            });
-        });
-
-        const stopWatch = watch(keywords, () => {
-            console.log(`from watch : ${keywords.value}`);
-        });
-
-        const stopWatchEffect = watchEffect(() => {
-            console.log(`from watchEffect : ${keywords.value}`);
-        });
-
-        const handleStopWatch = () => {
-            //TODO Stop watch changes
-            stopWatch();
-            stopWatchEffect();
-        };
-
+        const { posts, responseError, load } = getPosts();
+        load();
         return {
-            students,
-            keywords,
-            filterStudent,
-            stopWatch,
-            stopWatchEffect,
-            handleStopWatch,
+            posts,
+            responseError,
         };
     },
 };

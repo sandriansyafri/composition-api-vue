@@ -5,11 +5,11 @@
 
 <style>
 #app {
-    text-align: center;
     color: #2c3e50;
 }
 
 #nav {
+    text-align: center;
     padding: 30px;
 }
 

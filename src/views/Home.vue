@@ -4,6 +4,7 @@
             <div class="col-6 text-center">
                 <h1>Search</h1>
                 <input v-model="keywords" type="text" class="form-control" />
+                <button @click="handleStopWatch" class="btn btn-primary my-3">Stop</button>
             </div>
         </div>
         <div class="row mt-4 justify-content-center">
@@ -22,6 +23,7 @@
 
 <script>
 import { computed, ref } from "@vue/reactivity";
+import { watch, watchEffect } from "@vue/runtime-core";
 export default {
     setup() {
         const keywords = ref("");
@@ -32,10 +34,27 @@ export default {
             });
         });
 
+        const stopWatch = watch(keywords, () => {
+            console.log(`from watch : ${keywords.value}`);
+        });
+
+        const stopWatchEffect = watchEffect(() => {
+            console.log(`from watchEffect : ${keywords.value}`);
+        });
+
+        const handleStopWatch = () => {
+            //TODO Stop watch changes
+            stopWatch();
+            stopWatchEffect();
+        };
+
         return {
             students,
             keywords,
             filterStudent,
+            stopWatch,
+            stopWatchEffect,
+            handleStopWatch,
         };
     },
 };
